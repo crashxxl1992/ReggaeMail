@@ -1,0 +1,4 @@
+ReggaeMail
+==========
+
+Automatically triggered mail
