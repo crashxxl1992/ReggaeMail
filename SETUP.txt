@@ -1,0 +1,1 @@
+right-click mail.jar, add to Build path.
