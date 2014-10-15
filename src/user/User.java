@@ -12,7 +12,7 @@ import mailer.RegAuthenticator;
 
 public class User {
 	
-	public String primaryemail="pablo.arrighi@gmail.com";
+	public String primaryemail="cr4shxxl@gmail.com";
 	public String secondaryemail="pablo.arrighi.reggaemail@gmail.com";
 	public String secondarypassword="m1diiunivamu";
 	public String smtp_auth="true";
