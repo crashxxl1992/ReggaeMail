@@ -12,26 +12,41 @@ import mailer.RegAuthenticator;
 
 public class User {
 	
-	public String primaryemail="cr4shxxl@gmail.com";
-	private MailAccount account;
+	public String primaryemail;
+	private MailAccount currentAccount;
+	private ArrayList<MailAccount> accounts = new ArrayList<MailAccount>();
 	
-	public User(String primaryEmail, MailAccount mailAccount) {
+	
+	public User(String primaryEmail, MailAccount firstMailAccount) {
 		this.primaryemail = primaryEmail;
-		this.account = mailAccount;
+		this.currentAccount = firstMailAccount;
+		addAccount(firstMailAccount);
 	}
 	
-	public Properties getProperties() {
-		return account.getProperties();
+	public MailAccount getCurrentMailAccount() {
+		return this.currentAccount;
 	}
 	
-	public MailAccount getMailAccount() {
-		return this.account;
+	public void addAccount(MailAccount account) {
+		accounts.add(account);
 	}
+	
+	public ArrayList<MailAccount> getAccounts() {
+		return accounts;
+	}
+	
 	
 	public Session getSession() {
 	    javax.mail.Authenticator authenticator = new RegAuthenticator(this);
-	    return Session.getDefaultInstance(getProperties(),authenticator);
+	    return Session.getDefaultInstance(currentAccount.getProperties(),authenticator);
 	}
+
+	public void setCurrentMailAccount(MailAccount account) {
+		this.currentAccount = account;
+		
+	}
+	
+	
 	
 
 }

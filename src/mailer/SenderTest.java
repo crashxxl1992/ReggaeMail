@@ -33,7 +33,7 @@ public class SenderTest {
 		String textBody = "This is a new Text Message.";
 		try {      		
 		Message message = new MimeMessage(u.getSession());
-		message.setFrom(new InternetAddress(u.getMailAccount().getMail()));
+		message.setFrom(new InternetAddress(u.getCurrentMailAccount().getMail()));
 		message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("pablo.arrighi@gmail.com"));
 		message.setSubject("New Testing Subject");
 		//MailcapCommandMap mc = (MailcapCommandMap) CommandMap.getDefaultCommandMap();

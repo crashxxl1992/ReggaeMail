@@ -22,8 +22,8 @@ public class Reader {
         Session session = u.getSession();
 
             //Get the messages
-            store = session.getStore(u.getMailAccount().getStoreProtocol());
-            store.connect(u.getMailAccount().getImapHost() ,u.getMailAccount().getMail(), u.getMailAccount().getPassword());
+            store = session.getStore(u.getCurrentMailAccount().getStoreProtocol());
+            store.connect(u.getCurrentMailAccount().getImapHost() ,u.getCurrentMailAccount().getMail(), u.getCurrentMailAccount().getPassword());
             folder = (IMAPFolder) store.getFolder("inbox");
             if (!folder.isOpen()) folder.open(Folder.READ_WRITE);
             messages = Reader.folder.getMessages();

@@ -19,7 +19,10 @@ public class Controller {
 		System.out.println("Setting up the default user... ");
 		u = new User("cr4shxxl@gmail.com", new GmailMailAccount("pablo.arrighi.reggaemail@gmail.com", "m1diiunivamu"));
 		System.out.println("Done.\n");
-		
+		readUserAccounts(u);
+	}
+	
+	private static void readAccount(User u) throws MessagingException, IOException, ParseException {
 		System.out.println("Checking out his secondary mailbox...");
 		Reader.readFolder(u);
         System.out.println("  No of Messages : " + Reader.folder.getMessageCount());
@@ -70,8 +73,13 @@ public class Controller {
         Reader.closeFolder();
 		
 		System.out.println("Done till next cron.\n");
-		
-
+	}
+	
+	private static void readUserAccounts(User u) throws MessagingException, IOException, ParseException {
+		for(MailAccount account: u.getAccounts()) {
+			u.setCurrentMailAccount(account);
+			readAccount(u);
+		}
 	}
 
 }
